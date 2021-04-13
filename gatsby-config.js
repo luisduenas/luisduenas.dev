@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `luisduenas`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `luisduenas`,
+      summary: `Father of 3 cats and 2 dogs, I love nature & beer (:`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `My personal site`,
+    siteUrl: `https://luisduenas.dev`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `_lduenas`,
     },
   },
   plugins: [
@@ -46,6 +46,7 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
+          `gatsby-remark-emoji`,
         ],
       },
     },
