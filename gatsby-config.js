@@ -3,7 +3,7 @@ module.exports = {
     title: `luisduenas`,
     author: {
       name: `luisduenas`,
-      summary: `Father of 3 cats and 2 dogs, I love nature & beer (:`,
+      summary: `Creating code since 2016, I work from home as a web developer using Gatsby & GraphQ.`
     },
     description: `My personal site`,
     siteUrl: `https://luisduenas.dev`,
