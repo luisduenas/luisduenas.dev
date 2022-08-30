@@ -6,12 +6,12 @@ dotenv.config({
 
 module.exports = {
   siteMetadata: {
-    title: `Luis Dueñas blog`,
+    title: `luisduenas`,
     author: {
       name: `luisduenas`,
-      summary: `Creating code since 2016, I work from home as a web developer using Gatsby & GraphQL.`,
+      summary: `Coding since 2016, currently working as a web developer using Gatsby & GraphQL.`,
     },
-    description: `My personal site`,
+    description: `I write about stuff and code`,
     siteUrl: `https://luisduenas.dev`,
     social: {
       twitter: `_lduenas`,
@@ -113,7 +113,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/wallaby.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-react-helmet`,
