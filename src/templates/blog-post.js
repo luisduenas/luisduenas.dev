@@ -10,13 +10,19 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.datoCmsBlogpost
   const siteTitle = data.site.siteMetadata.title || `Title`
 
+  const meta = post.seoMetaTags?.tags.map((tags)=>{
+    return {
+      ...tags.attributes  
+    }
+  })
+
   return (
     <Layout
       location={location}
       title={siteTitle}
       desciption={post.contentNode.childMarkdownRemark.excerpt}
     >
-      <Seo title={post.title} />
+      <Seo title={post.title} meta={meta}/>
       <article
         className="blog-post"
         itemScope
@@ -81,6 +87,9 @@ export const pageQuery = graphql`
       }
     }
     datoCmsBlogpost(id: { eq: $id }) {
+      seoMetaTags {
+        tags
+      }
       title
       slug
       publishdate(formatString:"MMMM DD, YYYY")
