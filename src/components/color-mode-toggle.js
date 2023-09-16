@@ -1,15 +1,18 @@
 import React from "react"
 import { useColorMode, Switch } from "theme-ui"
 
-export default props => {
+const ColorModeToggle = () => {
   const [colorMode, setColorMode] = useColorMode()
   return (
     <Switch
       label={colorMode === "default" ? "dark" : "light"}
-      onClick={e => {
+      onClick={() => {
         setColorMode(colorMode === "default" ? "dark" : "default")
       }}
       checked={colorMode === "default"}
+      onChange={() => {}}
     />
   )
 }
+
+export default ColorModeToggle

@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
 import { Link, graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
@@ -60,11 +59,18 @@ const BlogIndex = ({ data, location }) => {
                       py: "1rem",
                     }}
                   >
-                    <GatsbyImage image={image} width="25%" />
+                    <GatsbyImage
+                      image={image}
+                      width="25%"
+                      alt="test"
+                      sx={{
+                        display: ["none", "block"],
+                      }}
+                    />
                     <div
                       sx={{
-                        ml: "1rem",
-                        width: "75%",
+                        ml: ["0", "1rem"],
+                        width: ["100%", "75%"],
                       }}
                     >
                       <p
@@ -73,9 +79,7 @@ const BlogIndex = ({ data, location }) => {
                         }}
                         itemProp="description"
                       />
-                      <small>
-                        {post.publishdate}
-                      </small>
+                      <small>{post.publishdate}</small>
                     </div>
                   </section>
                 </div>
@@ -101,7 +105,7 @@ export const pageQuery = graphql`
       nodes {
         slug
         title
-        publishdate(formatString:"MMMM DD, YYYY")
+        publishdate(formatString: "MMMM DD, YYYY")
         hero {
           gatsbyImageData(width: 250, placeholder: BLURRED)
         }

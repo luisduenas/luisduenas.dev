@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
 import { Link } from "gatsby"
 import ColorModeToggle from "../components/color-mode-toggle"
 
@@ -11,7 +10,7 @@ const Layout = ({ location, title, children }) => {
   return (
     <div
       sx={{
-        mx: "auto",
+        mx: ["1rem", null, "auto"],
         maxWidth: "720px",
         mb: "2rem"
       }}

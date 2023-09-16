@@ -1,6 +1,6 @@
 const theme = {
   config: {
-    initialColorModeName: "dark",
+    initialColorModeName: "default",
   },
   colors: {
     text: "#000",
@@ -17,7 +17,6 @@ const theme = {
         background: "#060606",
         primary: "#3cf",
         muted: "#191919",
-
       },
     },
   },
@@ -26,7 +25,7 @@ const theme = {
     heading: "inherit",
     monospace: "Menlo, monospace",
   },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
+  fontSizes: [10,12, 14, 16, 20, 24, 32, 48, 64, 72],
   fontWeights: {
     body: 400,
     heading: 700,
@@ -44,7 +43,7 @@ const theme = {
     },
     display: {
       variant: "text.heading",
-      fontSize: [5, 6],
+      fontSize: [5, null, 6],
       fontWeight: "display",
       letterSpacing: "-0.03em",
       mt: 3,
@@ -55,34 +54,28 @@ const theme = {
       fontFamily: "body",
       lineHeight: "body",
       fontWeight: "body",
-      a: {
-        color: "primary",
-        "&:hover": {
-          color: "secondary",
-        },
-      },
       h1: {
         variant: "text.display",
       },
       h2: {
         variant: "text.heading",
-        fontSize: 5,
+        fontSize: [5, null, 6],
       },
       h3: {
         variant: "text.heading",
-        fontSize: 4,
+        fontSize: [4, null, 5],
       },
       h4: {
         variant: "text.heading",
-        fontSize: 3,
+        fontSize: [3, null, 4],
       },
       h5: {
         variant: "text.heading",
-        fontSize: 2,
+        fontSize: [2, null, 3],
       },
       h6: {
         variant: "text.heading",
-        fontSize: 1,
+        fontSize: [1, null, 2],
       },
       a: {
         color: "primary",
@@ -97,6 +90,7 @@ const theme = {
         color: "text",
         bg: "muted",
         overflow: "auto",
+        overflowWrap: "break-word",
         code: {
           color: "inherit",
         },
@@ -104,6 +98,7 @@ const theme = {
       code: {
         fontFamily: "monospace",
         color: "secondary",
+        overflowWrap: "break-word",
       },
       inlineCode: {
         fontFamily: "monospace",

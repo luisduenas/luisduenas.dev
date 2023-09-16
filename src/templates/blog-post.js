@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import React from "react"
 import { Link, graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
@@ -36,7 +35,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.title}</h1>
           <p>{post.publishdate}</p>
         </header>
-        <GatsbyImage image={image} />
+        <GatsbyImage image={image} alt="test" />
         <hr
           sx={{
             my: "2rem",
@@ -58,12 +57,14 @@ const BlogPostTemplate = ({ data, location }) => {
         </footer>
       </article>
       <nav className="blog-post-nav">
-        <ul sx={{
-          listStyle: "none",
-          p: 0,
-          display: "flex",
-          justifyContent: "space-between"
-        }}>
+        <ul
+          sx={{
+            listStyle: "none",
+            p: 0,
+            display: ["block", "flex"],
+            justifyContent: "space-between",
+          }}
+        >
           {previous && (
             <li>
               <Link to={"/" + previous.slug} rel="prev">
