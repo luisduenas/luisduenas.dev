@@ -1,5 +1,8 @@
-import * as React from "react"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
+import React from "react"
 import { Link, graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -8,7 +11,6 @@ import Seo from "../components/seo"
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allDatoCmsBlogpost.nodes
-
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
@@ -27,33 +29,56 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Seo title="luis dueñas" />
       <Bio />
-      <ol style={{ listStyle: `none` }}>
+      <ol
+        sx={{
+          p: 0,
+          listStyle: "none",
+        }}
+      >
         {posts.map(post => {
           const title = post.title || post.slug
-
+          const image = getImage(post.hero)
           return (
-            <li key={post.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
-                    <Link to={post.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <small>{post.date}</small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.contentNode.childMarkdownRemark.excerpt,
+            <li
+              key={post.slug}
+              sx={{
+                mb: "2rem",
+              }}
+            >
+              <article itemScope itemType="http://schema.org/Article">
+                <div>
+                  <header>
+                    <h2 sx={{ my: 0 }}>
+                      <Link to={post.slug} itemProp="url">
+                        {title}
+                      </Link>
+                    </h2>
+                  </header>
+                  <section
+                    sx={{
+                      display: "flex",
+                      py: "1rem",
                     }}
-                    itemProp="description"
-                  />
-                </section>
+                  >
+                    <GatsbyImage image={image} width="25%" />
+                    <div
+                      sx={{
+                        ml: "1rem",
+                        width: "75%",
+                      }}
+                    >
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html: post.contentNode.childMarkdownRemark.excerpt,
+                        }}
+                        itemProp="description"
+                      />
+                      <small>
+                        {post.publishdate}
+                      </small>
+                    </div>
+                  </section>
+                </div>
               </article>
             </li>
           )
@@ -76,6 +101,10 @@ export const pageQuery = graphql`
       nodes {
         slug
         title
+        publishdate(formatString:"MMMM DD, YYYY")
+        hero {
+          gatsbyImageData(width: 250, placeholder: BLURRED)
+        }
         contentNode {
           childMarkdownRemark {
             excerpt

@@ -1,5 +1,8 @@
-import * as React from "react"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
+import React from "react"
 import { Link, graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -9,10 +12,11 @@ const BlogPostTemplate = ({ data, location }) => {
   const { previous, next } = data
   const post = data.datoCmsBlogpost
   const siteTitle = data.site.siteMetadata.title || `Title`
+  const image = getImage(post.hero)
 
-  const meta = post.seoMetaTags?.tags.map((tags)=>{
+  const meta = post.seoMetaTags?.tags.map(tags => {
     return {
-      ...tags.attributes  
+      ...tags.attributes,
     }
   })
 
@@ -22,7 +26,7 @@ const BlogPostTemplate = ({ data, location }) => {
       title={siteTitle}
       desciption={post.contentNode.childMarkdownRemark.excerpt}
     >
-      <Seo title={post.title} meta={meta}/>
+      <Seo title={post.title} meta={meta} />
       <article
         className="blog-post"
         itemScope
@@ -32,11 +36,21 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.title}</h1>
           <p>{post.publishdate}</p>
         </header>
+        <GatsbyImage image={image} />
+        <hr
+          sx={{
+            my: "2rem",
+          }}
+        />
+
         <section
           dangerouslySetInnerHTML={{
             __html: post.contentNode.childMarkdownRemark.html,
           }}
           itemProp="articleBody"
+          sx={{
+            fontSize: 3,
+          }}
         />
         <hr />
         <footer>
@@ -44,29 +58,26 @@ const BlogPostTemplate = ({ data, location }) => {
         </footer>
       </article>
       <nav className="blog-post-nav">
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
-          <li>
-            {previous && (
+        <ul sx={{
+          listStyle: "none",
+          p: 0,
+          display: "flex",
+          justifyContent: "space-between"
+        }}>
+          {previous && (
+            <li>
               <Link to={"/" + previous.slug} rel="prev">
                 ← {previous.title}
               </Link>
-            )}
-          </li>
-          <li>
-            {next && (
+            </li>
+          )}
+          {next && (
+            <li>
               <Link to={"/" + next.slug} rel="next">
                 {next.title} →
               </Link>
-            )}
-          </li>
+            </li>
+          )}
         </ul>
       </nav>
     </Layout>
@@ -92,7 +103,10 @@ export const pageQuery = graphql`
       }
       title
       slug
-      publishdate(formatString:"MMMM DD, YYYY")
+      publishdate(formatString: "MMMM DD, YYYY")
+      hero {
+        gatsbyImageData(placeholder: BLURRED)
+      }
       contentNode {
         childMarkdownRemark {
           excerpt

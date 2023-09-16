@@ -1,11 +1,6 @@
-/**
- * Bio component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
-import * as React from "react"
+/** @jsx jsx */
+import { jsx } from "theme-ui"
+import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
@@ -27,7 +22,13 @@ const Bio = () => {
   const author = data.site.siteMetadata?.author
 
   return (
-    <div>
+    <div
+      sx={{
+        mb: "4rem",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
       <StaticImage
         className="bio-avatar"
         layout="fixed"
@@ -37,10 +38,14 @@ const Bio = () => {
         height={50}
         quality={95}
         alt="Profile picture"
+        sx={{
+          mr: "1rem",
+          borderRadius: "50%"
+        }}
       />
       {author?.name && (
         <p>
-          Written by <strong>{author.name}</strong>.
+          <strong>{author.name}</strong> / web developer
           <br /> {author?.summary || null}
           {` `}
         </p>
