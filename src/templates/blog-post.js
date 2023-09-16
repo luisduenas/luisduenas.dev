@@ -5,7 +5,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+import SEO from "../components/seo"
 
 const BlogPostTemplate = ({ data, location }) => {
   const { previous, next } = data
@@ -25,7 +25,6 @@ const BlogPostTemplate = ({ data, location }) => {
       title={siteTitle}
       desciption={post.contentNode.childMarkdownRemark.excerpt}
     >
-      <Seo title={post.title} meta={meta} />
       <article
         className="blog-post"
         itemScope
@@ -86,6 +85,11 @@ const BlogPostTemplate = ({ data, location }) => {
 }
 
 export default BlogPostTemplate
+
+export const Head = () => (
+  // Pass seo values
+  <SEO />
+)
 
 export const pageQuery = graphql`
   query BlogPostById(

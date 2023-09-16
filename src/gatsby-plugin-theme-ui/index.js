@@ -1,11 +1,11 @@
 const theme = {
   config: {
-    initialColorModeName: "default",
+    initialColorModeName: "dark",
   },
   colors: {
     text: "#000",
     background: "#fff",
-    primary: "#fe6338",
+    primary: "#A72701",
     secondary: "#b31b1b",
     muted: "#d1d1d1",
     highlight: "#29112c",

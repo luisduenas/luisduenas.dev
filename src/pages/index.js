@@ -5,7 +5,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+import SEO from "../components/seo"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -13,7 +13,6 @@ const BlogIndex = ({ data, location }) => {
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
-        <Seo title="luis dueñas" />
         <Bio />
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the
@@ -26,7 +25,6 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="luis dueñas" />
       <Bio />
       <ol
         sx={{
@@ -93,6 +91,10 @@ const BlogIndex = ({ data, location }) => {
 }
 
 export default BlogIndex
+
+export const Head = () => (
+  <SEO />
+)
 
 export const pageQuery = graphql`
   {
