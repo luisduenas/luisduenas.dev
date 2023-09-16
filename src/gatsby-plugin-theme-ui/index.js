@@ -5,7 +5,7 @@ const theme = {
   colors: {
     text: "#000",
     background: "#fff",
-    primary: "#3366ff",
+    primary: "#fe6338",
     secondary: "#b31b1b",
     muted: "#d1d1d1",
     highlight: "#29112c",
@@ -15,7 +15,7 @@ const theme = {
       dark: {
         text: "#fff",
         background: "#060606",
-        primary: "#3cf",
+        primary: "tomato",
         muted: "#191919",
       },
     },
